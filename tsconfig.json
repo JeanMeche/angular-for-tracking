@@ -7,10 +7,17 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "paths": {
+      "my-lib": [
+        "./dist/my-lib"
+      ]
+    },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "isolatedModules": true,
     "experimentalDecorators": true,
+    "noUncheckedIndexedAccess": true,
+    "strictNullChecks": true,
     "importHelpers": true,
     "target": "ES2022",
     "module": "preserve"
@@ -29,6 +36,12 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/my-lib/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/my-lib/tsconfig.spec.json"
     }
   ]
 }
