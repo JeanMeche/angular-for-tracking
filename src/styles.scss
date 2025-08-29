@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$light-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+  )
+);
+
+$dark-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: dark,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+  )
+);
+
+@include mat.all-component-themes($light-theme);
+
+:root {
+  --background-color: #fff;
+  --text-color: #212121;
+  --tracked-bg: #fafafa;
+  --tracked-border: #eee;
+  --halo-shadow-color: rgba(0, 123, 255, 0.6);
+  --halo-border-color: rgba(0, 123, 255, 0.4);
+  --binding-highlight-color: #d8000c;
+  --separator-color: #ccc;
+  --input-border-color: #ccc;
+  --item-row-border-color: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+  @include mat.all-component-themes($dark-theme);
+  :root {
+    --background-color: #121212;
+    --text-color: #eee;
+    --tracked-bg: #2a2a2a;
+    --tracked-border: #444;
+    --halo-shadow-color: rgba(0, 123, 255, 0.8);
+    --halo-border-color: rgba(0, 123, 255, 0.6);
+    --binding-highlight-color: #399c3e;
+    --separator-color: #555;
+    --input-border-color: #555;
+    --item-row-border-color: #444;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+[tracked] {
+  display: block;
+  width: 150px;
+  padding: 4px;
+  margin: 4px;
+  background-color: var(--tracked-bg);
+  border: 1px solid var(--tracked-border);
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  max-width: 512px;
+  font-size: 2rem;
+
+  &.halo-active {
+    box-shadow:
+      0 0 15px 5px var(--halo-shadow-color),
+      0 2px 4px rgba(0, 0, 0, 0.05);
+    border-color: var(--halo-border-color);
+    transform: translateY(-2px);
+  }
+
+  &.binding-highlight {
+    color: var(--binding-highlight-color);
+    font-weight: bold;
+
+    input {
+      color: var(--binding-highlight-color);
+    }
+  }
+}
+
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.explanation-link {
+  color: white;
+  text-decoration: underline;
+  margin-right: 20px;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-layout > div:first-child {
+  grid-column: 2;
+}
+
+.infobox {
+  grid-column: 3;
+  border: 1px solid var(--item-row-border-color);
+  margin: auto auto auto 0;
+  padding: 10px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.demo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  max-width: 512px;
+  margin: 16px auto 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.item-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid var(--item-row-border-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+
+  pre {
+    padding: 8px;
+  }
+}
+.item-row pre {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.item-row input {
+  width: 140px;
+  border: 1px solid var(--input-border-color);
+  padding: 5px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.legend {
+  padding: 20px;
+  text-align: center;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.binding-highlight-text {
+  color: var(--binding-highlight-color);
+  font-weight: bold;
+}
+.blue-box {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--halo-shadow-color);
+  border-radius: 4px;
+}
+.separator {
+  border-bottom: 1px solid var(--separator-color);
+  margin: 40px 0;
+}
+.explanation {
+  padding: 0 20px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  text-align: center;
+}
+.explanation h2 {
+  margin-bottom: 20px;
+}

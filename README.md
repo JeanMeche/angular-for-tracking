@@ -1,6 +1,6 @@
-# Foobar
+# @For Tracking Demo
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0-rc.0.
+This project is a visual demonstration of the new `@for` block tracking feature in Angular. It aims to help understand how different tracking functions (`$index`, `id`, and `identity`) affect DOM element creation and data binding updates.
 
 ## Development server
 

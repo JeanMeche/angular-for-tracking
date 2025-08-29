@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "foobar": {
+    "angular-for-tracking": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -21,9 +21,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -53,10 +51,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "foobar:build:production"
+              "buildTarget": "angular-for-tracking:build:production"
             },
             "development": {
-              "buildTarget": "foobar:build:development"
+              "buildTarget": "angular-for-tracking:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -67,6 +65,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+            "aot": true,
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               {
@@ -74,12 +73,39 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.scss"]
+          }
+        }
+      }
+    },
+    "my-lib": {
+      "projectType": "library",
+      "root": "projects/my-lib",
+      "sourceRoot": "projects/my-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/my-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/my-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/my-lib/tsconfig.spec.json"
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f9d91ab1-cdec-47e0-a595-396c9d8877d4"
   }
 }
